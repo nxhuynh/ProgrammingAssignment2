@@ -3,22 +3,16 @@
 
 ## Write a short comment describing this function
 ## create a special matrix obj that can cache its inverse
+## provided that the input matrix is invertible
 makeCacheMatrix <- function(x = matrix()) {
     i <- NULL
-    get <- function(){ x }
+    get <- function() x
     set <- function(y){
         x <<- y
         i <<- NULL
     }
-    getInverse <- function(){
-        ret <- NULL
-        if (nrow(x) != ncol(x))
-            message("Non-squared matrix can't be inversed")
-        else
-            ret <- i
-        ret
-    }
-    setInverse <- function(ii){ i <<- ii }
+    getInverse <- function() i
+    setInverse <- function(ii) i <<- ii
     
     list(get = get, set = set, getInverse = getInverse, setInverse = setInverse)
 }
